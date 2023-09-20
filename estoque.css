@@ -1,0 +1,116 @@
+/* Estilos para telas maiores, como desktops */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Alinha os elementos à direita e à esquerda */
+    align-items: center;
+}
+
+#toggle-sidebar {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 0;
+    background-color: #333;
+    color: white;
+    overflow-y: auto;
+    transition: width 0.3s;
+}
+
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 10px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Estilos para telas menores, como smartphones */
+@media (max-width: 768px) {
+    .logo img {
+        width: 150px;
+    }
+
+    .sidebar.open {
+        width: 100%;
+    }
+
+    .main {
+        padding: 10px;
+    }
+
+    /* Estilos para a pesquisa */
+    .search-container {
+        flex-direction: row-reverse; /* Inverte a ordem dos elementos */
+        margin: 10px 20px; /* Adapte as margens conforme necessário */
+    }
+
+    #search-input {
+        /* Estilos para o campo de pesquisa, se necessário */
+    }
+
+    #search-button {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+}
+/* Estilos para telas menores, como smartphones */
+@media (max-width: 768px) {
+    /* ... (seu CSS anterior) ... */
+
+    /* Estilos para o botão de busca */
+    #search-button {
+        background-color: #007bff; /* Cor de fundo azul */
+        color: white; /* Cor do texto branco */
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        border-radius: 5px; /* Borda arredondada */
+        transition: background-color 0.3s; /* Transição suave da cor de fundo */
+    }
+
+    #search-button:hover {
+        background-color: #0056b3; /* Cor de fundo mais escura no hover */
+    }
+}
