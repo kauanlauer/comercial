@@ -1,6 +1,3 @@
-<?php
-include('verificar_acesso.php');
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
