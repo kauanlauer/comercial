@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #2d3c4b;
     color: white;
     padding: 10px;
     display: flex;
@@ -35,7 +35,7 @@ header {
 
 .sidebar {
     width: 0;
-    background: linear-gradient(to bottom, #333, #222);
+    background: linear-gradient(to bottom, #2d3c4b, #2d3c4b);
     color: white;
     overflow-y: auto;
     transition: width 0.3s, background 0.3s;
@@ -103,8 +103,17 @@ header {
         width: 150px;
     }
 
+    .container {
+        flex-direction: column; /* Altera a direção dos elementos para empilhá-los verticalmente */
+    }
+
+    .sidebar {
+        width: 100%; /* Ocupa toda a largura em telas menores */
+        box-shadow: none; /* Remova a sombra na barra lateral em telas menores */
+    }
+
     .sidebar.open {
-        width: 100%;
+        width: 100%; /* A barra lateral permanece aberta em telas menores */
     }
 
     .main {
@@ -153,9 +162,10 @@ header {
         box-shadow: 0 0 5px #007bff, 0 0 20px #007bff;
     }
 }
+
 /* Estilos para o rodapé */
 footer {
-    background-color: #333;
+    background-color: #2d3c4b;
     color: white;
     text-align: center;
     padding: 10px;
