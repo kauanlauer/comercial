@@ -103,7 +103,6 @@
     </div>
 
     <script>
-        // Simulação de um banco de dados de usuários
         const users = [
             { username: "erick.lauer", password: "123456", userType: "Administrador" },
             { username: "vendas", password: "vendas", userType: "Usuário Comum" },
@@ -119,17 +118,14 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Verifique as credenciais do usuário
             const user = users.find((u) => u.username === username && u.password === password);
 
             if (user) {
-                // Redirecionar com base no tipo de usuário
                 if (user.userType === "Administrador") {
-                    // Redirecione para a página de administração
+                    localStorage.setItem("loggedInUser", user.username);
                     window.location.href = "indexadm.html";
-                } else {
-
-                    // Redirecione para a página de usuário comum
+                } else if (user.userType === "Usuário Comum") {
+                    localStorage.setItem("loggedInUser", user.username);
                     window.location.href = "indexcomum.html";
                 }
             } else {

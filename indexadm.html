@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="indexadm.css">
     <title>Menu inicial</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Adicione o link para o ícone aqui -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -33,15 +33,27 @@
                 </ul>
             </nav>
         </div>
-        <!-- Resto do conteúdo -->
-    </div>
         <main>
-            <!-- Conteúdo principal aqui -->
+            <!-- Exiba o nome de usuário aqui -->
+            <h1>Bem-vindo, <span id="username-element"></span></h1>
+            <!-- ... (seu código existente) ... -->
         </main>
         <footer>
             <p>&copy; 2023 Kauan Lauer. Todos os direitos reservados. Site desenvolvido para uso interno na empresa Manupackaging Fitasa e Amazonia.</p>
         </footer>
     </div>
+    <script>
+        // Recupere o nome do usuário do localStorage
+        const username = localStorage.getItem("loggedInUser");
+
+        if (username) {
+            // Exiba o nome de usuário na página
+            const usernameElement = document.getElementById("username-element");
+            if (usernameElement) {
+                usernameElement.textContent = username;
+            }
+        }
+    </script>
     <script src="indexadm.js"></script>
 </body>
 </html>
