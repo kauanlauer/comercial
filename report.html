@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estoquecuritiba.css">
     <title>Reportar</title>
+    <style>
+        /* Estilos para a seção da planilha */
+        .spreadsheet-section {
+            background-color: #f9f9f9; /* Cor de fundo para destacar a planilha */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 10px; /* Borda arredondada */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+            margin-top: 20px; /* Espaçamento superior para separar do conteúdo principal */
+        }
+
+        /* Estilos para o título da planilha */
+        .spreadsheet-section h2 {
+            font-size: 24px; /* Tamanho da fonte do título */
+            margin-bottom: 10px; /* Espaçamento inferior */
+        }
+
+        /* Estilos para a planilha incorporada */
+        #planilha {
+            width: 100%;
+            height: 600px;
+            border: none;
+            box-shadow: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,66 +41,60 @@
         <div class="sidebar">
             <nav>
                 <ul>
+                    <li><a href="estoquecuritiba.html"><i class="fas fa-home"></i> <span>Estoque Comercial</span></a></li>
+                    <li><a href="estoquelog.html"><i class="fas fa-box"></i> <span>Estoque Logística</span></a></li>
                     
-                    <!-- Botão de voltar -->
-                    <li><a href="#" id="go-back"><i class="fas fa-arrow-left"></i> <span>Voltar</span></a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> <span>Avisos</span></a></li>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>
                     <li><a href="index.html"><i class="fas fa-box"></i> <span>Trocar Usuário</span></a></li>
-
                 </ul>
             </nav>
         </div>
-        <main>
-            <!-- Conteúdo principal aqui -->
-
-            <section id="report-error">
-                <h2></h2>
-                <form id="error-form">
-                    <label for="name">Seu Nome:</label>
-                    <input type="text" id="name" name="name" required><br><br>
-                
-                    <label for="email">Seu Email:</label>
-                    <input type="email" id="email" name="email" required><br><br>
-                
-                    <label for="comment">Comentário:</label><br>
-                    <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br><br>
-                
-                    <button type="submit">Enviar</button>
-                </form>
-                
-            </section>
-        </main>
-    </div>
+        <form id="myForm" action="https://script.google.com/macros/s/AKfycbx4f3v1CleeWFC4CbUFVNqVq7G8Sl2zKkXLpmmvSh1bx2xr4y5SP7crRDzOyN7Va9uDOA/exec" method="post">
+            Nome: <input type="text" id="nome" name="nome"><br>
+            Email: <input type="email" id="email" name="email"><br>
+            Descrição: <textarea id="descricao" name="descricao"></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+        
+        <div id="confirmationMessage" style="display: none;">Dados enviados com sucesso!</div>
     <script src="estoquecuritiba.js"></script>
     <script>
-        document.getElementById('send-email').addEventListener('click', function(event) {
-            event.preventDefault();
-    
-            const name = document.getElementById('name').value;
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
-            const comment = document.getElementById('comment').value;
-    
-            fetch('https://script.google.com/macros/s/AKfycby7yZ3DKWj-ucar0Af3hSA_duoWwYLn7F8oPYlPvIvP4vZqk9cev6CTD8JUKghL-ubxDQ/exec', {
+            const descricao = document.getElementById('descricao').value;
+
+            // URL do Google Apps Script
+            const url = 'https://script.google.com/macros/s/AKfycbx4f3v1CleeWFC4CbUFVNqVq7G8Sl2zKkXLpmmvSh1bx2xr4y5SP7crRDzOyN7Va9uDOA/exec';
+
+            fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify({ name, email, comment })
+                body: `nome=${nome}&email=${email}&descricao=${descricao}`
             })
             .then(response => response.text())
             .then(data => {
-                alert(data);
-                // Limpar os campos após o envio
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('comment').value = '';
+                console.log(data);
+                // Mostra a mensagem de confirmação
+                document.getElementById('confirmationMessage').style.display = 'block';
+
+                // Redireciona para a mesma página após 3 segundos (3000 milissegundos)
+                setTimeout(function() {
+                    window.location.href = window.location.href;
+                }, 3000);
             })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Ocorreu um erro ao enviar o relatório.');
-            });
+            .catch(error => console.error('Erro:', error));
         });
     </script>
 </body>
