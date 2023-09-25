@@ -270,3 +270,68 @@ header {
 #error-form button:hover {
     background-color: #0056b3; /* Cor do botão quando passar o mouse sobre ele */
 }
+ /* Estilos para o formulário */
+ #myForm {
+    background-color: #f5f5f5; /* Cor de fundo do formulário */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário na página */
+}
+
+/* Espaçamento nas laterais das entradas de texto e botão */
+#myForm label,
+#myForm textarea,
+#myForm input[type="submit"] {
+    margin: 10px 0; /* Espaçamento superior e inferior */
+}
+
+/* Estilo para rótulos de entrada */
+#myForm label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo para entradas de texto e área de texto */
+#myForm input[type="text"],
+#myForm input[type="email"],
+#myForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Cor da borda */
+    border-radius: 5px; /* Borda arredondada */
+    font-size: 16px;
+}
+
+/* Estilo para o botão de envio */
+#myForm input[type="submit"] {
+    background-color: #007bff; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Borda arredondada */
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Mudar a cor do botão quando passar o mouse sobre ele */
+#myForm input[type="submit"]:hover {
+    background-color: #0056b3; /* Cor do botão quando passar o mouse sobre ele */
+}
+    /* Estilo para a mensagem de confirmação */
+    #confirmationMessage {
+        background-color: #4CAF50; /* Cor de fundo verde */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px; /* Borda arredondada */
+        font-size: 16px;
+        text-align: center;
+        display: none; /* Inicialmente oculta */
+        margin-top: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    }
+
