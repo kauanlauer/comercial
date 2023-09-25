@@ -231,6 +231,10 @@ footer a:hover {
     font-weight: bold; /* Texto em negrito */
     color: #ff6600; /* Cor de destaque laranja (você pode ajustar a cor conforme desejar) */
 }
+.update-details p.highlight {
+    font-weight: bold; /* Texto em negrito */
+    color: #ff3300; /* Cor de destaque laranja (você pode ajustar a cor conforme desejar) */
+}
 .discreet-footer {
     background-color: #2d3c4b;
     color: white;
