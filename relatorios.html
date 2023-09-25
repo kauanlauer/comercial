@@ -43,7 +43,7 @@
                 <iframe id="planilha" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-OtGAcu7veW58h2SB83FdmjKV1iGl1c4V4wqELQGRUI5A19FZbMVg0vV-twquMcHAs1_r65mpst87/pubhtml" width="100%" height="600" frameborder="0" scrolling="yes" style="border: none;"></iframe>
             </section>
         </main>
-        
+        <button id="showPasswordPrompt">Mostrar Senha</button>
     </div>
     <div class="discreet-footer">
         Kauan Lauer & Manupackaging | Todos os direitos reservados. Site de uso interno.
@@ -52,7 +52,8 @@
     <script>
         const senhaCorreta = "kauan3396"; // Substitua "suaSenhaAqui" pela senha desejada
 
-        document.addEventListener("DOMContentLoaded", function () {
+        // Função para mostrar a solicitação de senha quando o botão é clicado
+        document.getElementById("showPasswordPrompt").addEventListener("click", function () {
             const senhaInput = prompt("Insira a senha de acesso:");
 
             if (senhaInput === senhaCorreta) {
