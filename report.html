@@ -36,46 +36,47 @@
                 <form id="error-form">
                     <label for="name">Seu Nome:</label>
                     <input type="text" id="name" name="name" required><br><br>
-
+                
                     <label for="email">Seu Email:</label>
                     <input type="email" id="email" name="email" required><br><br>
-
-                    <label for="error-description">Descrição do Erro:</label><br>
-                    <textarea id="error-description" name="error-description" rows="4" cols="50" required></textarea><br><br>
-
-                    <button type="button" id="send-email">Enviar</button>
+                
+                    <label for="comment">Comentário:</label><br>
+                    <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br><br>
+                
+                    <button type="submit">Enviar</button>
                 </form>
+                
             </section>
         </main>
     </div>
     <script src="estoquecuritiba.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script type="text/javascript">
+    <script>
         document.getElementById('send-email').addEventListener('click', function(event) {
             event.preventDefault();
-
+    
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const errorDescription = document.getElementById('error-description').value;
-
-            Email.send({
-                Host: "smtp.your-email-provider.com", // Substitua pelo servidor SMTP do seu provedor de e-mail
-                Username: "your-email@example.com", // Substitua pelo seu endereço de e-mail
-                Password: "your-email-password", // Substitua pela senha do seu e-mail
-                To: "erick.lauer@manupackaging.com.br", // Substitua pelo seu endereço de e-mail
-                From: email,
-                Subject: "Report Site de Estoque",
-                Body: `Nome: ${name}<br>Email: ${email}<br>Descrição do Erro: ${errorDescription}`
-            }).then(function(response) {
-                alert("Erro relatado com sucesso! Obrigado.");
-            }, function(error) {
-                alert("Desculpe, ocorreu um erro ao enviar o relatório.");
+            const comment = document.getElementById('comment').value;
+    
+            fetch('https://script.google.com/macros/s/AKfycby7yZ3DKWj-ucar0Af3hSA_duoWwYLn7F8oPYlPvIvP4vZqk9cev6CTD8JUKghL-ubxDQ/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, comment })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                // Limpar os campos após o envio
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('comment').value = '';
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar o relatório.');
             });
-        });
-
-        // Função para voltar à página anterior
-        document.getElementById('go-back').addEventListener('click', function() {
-            window.history.back();
         });
     </script>
 </body>
