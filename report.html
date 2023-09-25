@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estoquecuritiba.css">
+    <title>Reportar</title>
+</head>
+<body>
+    <header>
+        <button id="toggle-sidebar">&#9776;</button>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    
+                    <!-- Botão de voltar -->
+                    <li><a href="#" id="go-back"><i class="fas fa-arrow-left"></i> <span>Voltar</span></a></li>
+                    <br>
+                    <br>
+                    <br>
+                    <li><a href="index.html"><i class="fas fa-box"></i> <span>Trocar Usuário</span></a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <main>
+            <!-- Conteúdo principal aqui -->
+
+            <section id="report-error">
+                <h2></h2>
+                <form id="error-form">
+                    <label for="name">Seu Nome:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="email">Seu Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="error-description">Descrição do Erro:</label><br>
+                    <textarea id="error-description" name="error-description" rows="4" cols="50" required></textarea><br><br>
+
+                    <button type="button" id="send-email">Enviar</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="estoquecuritiba.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript">
+        document.getElementById('send-email').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const errorDescription = document.getElementById('error-description').value;
+
+            Email.send({
+                Host: "smtp.your-email-provider.com", // Substitua pelo servidor SMTP do seu provedor de e-mail
+                Username: "your-email@example.com", // Substitua pelo seu endereço de e-mail
+                Password: "your-email-password", // Substitua pela senha do seu e-mail
+                To: "erick.lauer@manupackaging.com.br", // Substitua pelo seu endereço de e-mail
+                From: email,
+                Subject: "Report Site de Estoque",
+                Body: `Nome: ${name}<br>Email: ${email}<br>Descrição do Erro: ${errorDescription}`
+            }).then(function(response) {
+                alert("Erro relatado com sucesso! Obrigado.");
+            }, function(error) {
+                alert("Desculpe, ocorreu um erro ao enviar o relatório.");
+            });
+        });
+
+        // Função para voltar à página anterior
+        document.getElementById('go-back').addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+</body>
+</html>

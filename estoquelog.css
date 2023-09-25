@@ -31,6 +31,9 @@ header {
 
 .container {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
 }
 
 .sidebar {
@@ -40,6 +43,11 @@ header {
     overflow-y: auto;
     transition: width 0.3s, background 0.3s;
     box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
 .sidebar.open {
@@ -103,29 +111,25 @@ header {
         width: 150px;
     }
 
-    .container {
-        flex-direction: column; /* Altera a direção dos elementos para empilhá-los verticalmente */
-    }
-
     .sidebar {
-        width: 100%; /* Ocupa toda a largura em telas menores */
-        box-shadow: none; /* Remova a sombra na barra lateral em telas menores */
+        width: 100%;
+        box-shadow: none;
+        position: static;
     }
 
     .sidebar.open {
-        width: 100%; /* A barra lateral permanece aberta em telas menores */
+        width: 100%;
     }
 
     .main {
         padding: 10px;
     }
 }
-/* ... Seus estilos existentes ... */
 
 /* Adicione um estilo para o efeito de neon */
 .sidebar nav ul li a span {
     position: relative;
-    transition: color 0.3s, box-shadow 0.3s; /* Adicionando transição na cor e na sombra */
+    transition: color 0.3s, box-shadow 0.3s;
 }
 
 .sidebar nav ul li a span::before {
@@ -135,19 +139,19 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #007bff, transparent); /* Gradiente azul para o efeito de neon */
-    opacity: 0; /* Comece com opacidade zero para ocultar o efeito */
-    z-index: -1; /* Coloque o efeito atrás do texto */
-    transition: opacity 0.3s; /* Adicione uma transição suave na opacidade */
+    background: linear-gradient(90deg, transparent, #007bff, transparent);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s;
 }
 
-/* Quando o mouse passar sobre um item do menu, mostre o efeito de neon */
+/* Quando o mouse passa sobre um item do menu */
 .sidebar nav ul li a:hover span::before {
-    opacity: 1; /* Torna o efeito de neon visível */
-    animation: neon 1.5s infinite; /* Adiciona uma animação de brilho infinito */
+    opacity: 1;
+    animation: neon 1.5s infinite;
 }
 
-/* Animação de brilho (pode ajustar as cores e o brilho conforme necessário) */
+/* Animação de brilho */
 @keyframes neon {
     0% {
         opacity: 0;
@@ -163,30 +167,55 @@ header {
     }
 }
 
-/* Estilos para o rodapé */
-footer {
+/* Estilos para o texto de direitos autorais discreto */
+.discreet-footer {
     background-color: #2d3c4b;
     color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
+    padding: 5px;
+    font-size: 12px;
+    opacity: 0;
+    position: absolute;
     bottom: 0;
-    width: 100%;
-}
-
-/* Estilos para o texto do rodapé */
-footer p {
-    margin: 0;
+    left: 0;
+    right: 0;
 }
 
 /* Estilize o link de direitos autorais */
-footer a {
+.discreet-footer a {
     color: #ffd700;
     text-decoration: none;
     font-weight: bold;
 }
 
 /* Estilize o link de direitos autorais quando passar o mouse sobre ele */
-footer a:hover {
+.discreet-footer a:hover {
     text-decoration: underline;
+}
+
+/* Estilo para mostrar o texto de direitos autorais quando o usuário rolar até a parte inferior */
+.show-footer {
+    opacity: 1;
+}
+/* Estilos para a seção da planilha */
+.spreadsheet-section {
+    background-color: #f9f9f9; /* Cor de fundo para destacar a planilha */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Borda arredondada */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    margin-top: 20px; /* Espaçamento superior para separar do conteúdo principal */
+}
+
+/* Estilos para o título da planilha */
+.spreadsheet-section h2 {
+    font-size: 24px; /* Tamanho da fonte do título */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Estilos para a planilha incorporada */
+#planilha {
+    width: 100%;
+    height: 600px;
+    border: none;
+    box-shadow: none;
 }
