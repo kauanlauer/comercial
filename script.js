@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const toggleSidebarButton = document.getElementById('toggle-sidebar');
     const sidebar = document.querySelector('.sidebar');
-    const footer = document.querySelector('footer');
 
     // Remova a classe 'open' (se já estiver definida) para garantir que o menu comece fechado
     sidebar.classList.remove('open');
@@ -23,8 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // JavaScript para mostrar o rodapé quando o usuário rolar até a parte inferior
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         var scrollY = window.scrollY || window.pageYOffset;
+        const footer = document.querySelector('footer');
 
         if (scrollY + window.innerHeight >= document.body.scrollHeight) {
             footer.classList.add('show-footer');
