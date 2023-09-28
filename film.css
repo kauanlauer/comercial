@@ -282,3 +282,105 @@ tbody td.highlight {
     font-weight: bold;
     color: #ff6600; /* Cor de destaque laranja (você pode ajustar a cor conforme desejar) */
 }
+/* Estilizando a tabela */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    overflow-x: auto; /* Adicione rolagem horizontal quando necessário */
+}
+
+/* Estilizando as células do cabeçalho */
+th {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold; /* Isso deixa o cabeçalho em negrito */
+}
+
+/* Estilizando as células de dados */
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilizando as linhas alternadas */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilizando o hover nas células da tabela */
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Estilizando o hover nas células da tabela */
+tr:hover {
+    background-color: #7bfa05b9; /* Cor de fundo quando o mouse passa por cima */
+}
+
+/* Estilizando as células quando o mouse passa por cima */
+tr:hover td {
+    background-color: transparent; /* Define as células para transparente */
+    color: #000000; /* Altera a cor do texto para preto */
+}
+
+/* Estilizando as células de cabeçalho quando o mouse passa por cima */
+tr:hover th {
+    background-color: #ddd; /* Cor de fundo quando o mouse passa por cima */
+    color: #000000; /* Altera a cor do texto para preto */
+}
+h1 {
+    text-align: center; /* Centraliza horizontalmente */
+    color: #007190; /* Cor do texto (azul) */
+}
+/* Estilo para cada cartão de informação */
+.info-card {
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Estilo para os títulos dos materiais */
+.info-card strong {
+    font-size: 18px;
+    color: #007190; /* Cor azul */
+    margin-bottom: 10px;
+}
+.info-card {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+/* Estilo para cada cartão de informação */
+.info-card {
+    background-color: #fff; /* Fundo branco */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease; /* Adicione a transição para a transformação */
+}
+
+/* Estilo para os títulos dos materiais */
+.info-card strong {
+    font-size: 18px;
+    color: #007190; /* Cor azul */
+    margin-bottom: 10px;
+}
+
+/* Estilo para as informações sobre os materiais */
+.info-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #000000; /* Cor de texto padrão */
+}
+
+/* Adicione a transformação ao passar o mouse */
+.info-card:hover {
+    transform: scale(1.01); /* Aumente ligeiramente de tamanho */
+}
