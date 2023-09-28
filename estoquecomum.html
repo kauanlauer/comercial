@@ -34,5 +34,41 @@
         </main>
     </div>
     <script src="indexadm.js"></script>
+    <script>
+        // Recupere o nome do usuário do localStorage
+        const username = localStorage.getItem("loggedInUser");
+
+        if (username) {
+            // Exiba o nome de usuário na página
+            const usernameElement = document.getElementById("username-element");
+            if (usernameElement) {
+                usernameElement.textContent = username;
+            }
+        }
+
+        // Defina o tempo limite em milissegundos (5 minutos = 300.000 ms)
+        const timeout = 300000; // 5 minutos em milissegundos
+
+        let logoutTimer; // Variável para armazenar o temporizador
+
+        // Função para redirecionar para a página de login
+        function redirectToLogin() {
+            window.location.href = "index.html"; // Redirecionar para a página de login
+        }
+
+        // Função para reiniciar o temporizador
+        function resetLogoutTimer() {
+            clearTimeout(logoutTimer); // Limpar o temporizador anterior
+            logoutTimer = setTimeout(redirectToLogin, timeout); // Configurar um novo temporizador
+        }
+
+        // Adicionar manipuladores de eventos para redefinir o temporizador em interações do usuário
+        document.addEventListener("mousemove", resetLogoutTimer); // Mousemove
+        document.addEventListener("keypress", resetLogoutTimer); // Tecla pressionada
+        document.addEventListener("click", resetLogoutTimer); // Clique
+
+        // Inicialize o temporizador quando a página carregar
+        resetLogoutTimer();
+    </script>
 </body>
 </html>

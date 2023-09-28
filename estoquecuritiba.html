@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estoquecuritiba.css">
-    <title>Menu inicial</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Relatórios</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilo para ocultar o conteúdo principal */
+        .hidden-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <button id="toggle-sidebar">&#9776;</button>
+        <button id="toggle-sidebar">&#9776; Menu</button>
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
@@ -17,27 +24,46 @@
         <div class="sidebar">
             <nav>
                 <ul>
-                    <li><a href="estoquecuritiba.html"><i class="fas fa-home"></i> <span>Estoque Comercial</span></a></li>
-                    <li><a href="estoquelog.html"><i class="fas fa-box"></i> <span>Estoque Logística</span></a></li>
-                    
-                    <li><a href="#"><i class="fas fa-bell"></i> <span>Avisos</span></a></li>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <li><a href="index.html"><i class="fas fa-box"></i> <span>Trocar Usuário</span></a></li>
+                    <li><a href="indexadm.html">Menu</a></li>
+                    <li><a href="estoquelog.html">Estoque Logística</a></li>
+                    <li><a href="estoque.html">Estoque Comercial</a></li>
+                    <li><a href="report.html">Reportar</a></li>
+                    <li><a href="avisoadm.html">Avisos</a></li>
                 </ul>
             </nav>
         </div>
-        <!-- Resto do conteúdo -->
-    </div>
-        <main>
-            <!-- Conteúdo principal aqui -->
+        <main class="hidden-content">
+            <section class="content-section">
+                <!-- Seu conteúdo principal aqui -->
+                <h1>Relatórios de erro</h1>
+            </section>
+        
+            <section class="spreadsheet-section">
+                <!-- Elemento para incorporar a planilha com um ID -->
+                <iframe id="planilha" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-OtGAcu7veW58h2SB83FdmjKV1iGl1c4V4wqELQGRUI5A19FZbMVg0vV-twquMcHAs1_r65mpst87/pubhtml" width="100%" height="600" frameborder="0" scrolling="yes" style="border: none;"></iframe>
+            </section>
         </main>
+        
+    </div>
+    <div class="discreet-footer">
+        Kauan Lauer & Manupackaging | Todos os direitos reservados. Site de uso interno.
     </div>
     <script src="estoquecuritiba.js"></script>
+    <script>
+        const senhaCorreta = "kauan3396"; // Substitua "suaSenhaAqui" pela senha desejada
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const senhaInput = prompt("Insira a senha de acesso:");
+
+            if (senhaInput === senhaCorreta) {
+                // Exibir o conteúdo principal se a senha estiver correta
+                document.querySelector('.hidden-content').style.display = 'block';
+            } else {
+                alert("Senha incorreta. Você não tem acesso a esta página.");
+                window.location.href = "indexadm.html"; // Redirecionar para a página de login
+            }
+        });
+    </script>
+    
 </body>
 </html>
