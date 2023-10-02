@@ -37,6 +37,7 @@
         .countdown-message {
             font-size: 24px;
             margin-bottom: 20px;
+            animation: blink 2s infinite; /* Piscar a cada 2 segundos */
         }
 
         .try-again-button {
@@ -67,52 +68,80 @@
                 transform: scale(1);
             }
         }
+
+        /* Exemplo de gradiente de fundo */
+        body {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+        }
+
+        /* Exemplo de animação de entrada para o botão */
+        .try-again-button {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-in-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="countdown-container">
         <div class="countdown-clock" id="countdown-clock">Carregando...</div>
         <div class="countdown-message">
-            Estamos temporariamente sem sistema de estoque devido ao inventário mensal no SAP.<br>Estaremos de volta em breve. Por favor, aguarde.
+            Estamos sem sistema de estoque devido ao inventário mensal SAP.<br>Voltaremos em breve.
         </div>
-        <button class="try-again-button" id="try-again-button" style="display: none;">Tentar novamente</button>
+        <button class="try-again-button" id="try-again-button" style="display: none;">Tentar agora</button>
     </div>
 
     <script>
-        // Defina o horário previsto para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
-        const returnTime = "23:59:59";
+       // Defina o horário previsto para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
+const returnTime = "09:00:00";
 
-        function updateCountdown() {
-            const currentTime = new Date();
-            const returnDateTime = new Date();
-            const countdownClock = document.getElementById('countdown-clock');
-            const tryAgainButton = document.getElementById('try-again-button');
+function updateCountdown() {
+    const currentTime = new Date();
+    const returnDateTime = new Date();
+    const countdownClock = document.getElementById('countdown-clock');
+    const tryAgainButton = document.getElementById('try-again-button');
+    const countdownMessage = document.getElementById('countdown-message');
 
-            // Analise o horário de retorno definido
-            const returnTimeArray = returnTime.split(':');
-            returnDateTime.setHours(parseInt(returnTimeArray[0], 10), parseInt(returnTimeArray[1], 10), parseInt(returnTimeArray[2], 10));
+    // Analise o horário de retorno definido
+    const returnTimeArray = returnTime.split(':');
+    returnDateTime.setHours(parseInt(returnTimeArray[0], 10), parseInt(returnTimeArray[1], 10), parseInt(returnTimeArray[2], 10));
 
-            const timeDifference = returnDateTime - currentTime;
+    // Adicione um dia à data de retorno
+    returnDateTime.setDate(returnDateTime.getDate() + 1);
 
-            // Verifique se o tempo já passou
-            if (timeDifference <= 0) {
-                countdownClock.textContent = '00:00:00';
-                tryAgainButton.style.display = 'block';
+    const timeDifference = returnDateTime - currentTime;
 
-                // Adicione o evento de clique para redirecionar para "index.html" quando o botão for clicado
-                tryAgainButton.addEventListener('click', function () {
-                    window.location.href = 'index.html';
-                });
-            } else {
-                const hours = String(Math.floor(timeDifference / 3600000)).padStart(2, '0');
-                const minutes = String(Math.floor((timeDifference % 3600000) / 60000)).padStart(2, '0');
-                const seconds = String(Math.floor((timeDifference % 60000) / 1000)).padStart(2, '0');
-                countdownClock.textContent = `${hours}:${minutes}:${seconds}`;
-                setTimeout(updateCountdown, 1000);
-            }
-        }
+    // Verifique se o tempo já passou
+    if (timeDifference <= 0) {
+        countdownClock.textContent = '00:00:00';
+        tryAgainButton.style.display = 'block';
+        countdownMessage.textContent = 'O sistema já está de volta.';
+        tryAgainButton.addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    } else {
+        const hours = String(Math.floor(timeDifference / 3600000)).padStart(2, '0');
+        const minutes = String(Math.floor((timeDifference % 3600000) / 60000)).padStart(2, '0');
+        const seconds = String(Math.floor((timeDifference % 60000) / 1000)).padStart(2, '0');
+        countdownClock.textContent = `${hours}:${minutes}:${seconds}`;
+        countdownMessage.textContent = `${hours}h ${minutes}m ${seconds}s`;
+        setTimeout(updateCountdown, 1000);
+    }
+}
 
-        updateCountdown();
+updateCountdown();
+
     </script>
 </body>
 </html>
