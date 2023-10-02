@@ -30,6 +30,7 @@
             margin-bottom: 20px;
             color: #e74c3c;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            cursor: wait; /* Adiciona um cursor de "carregando" */
         }
 
         .countdown-message {
@@ -58,14 +59,14 @@
     <div class="countdown-container">
         <div class="countdown-clock" id="countdown-clock">Carregando...</div>
         <div class="countdown-message">
-            Estamos sem sistema de estoque devido ao inventário mensal SAP.<br>Voltaremos em breve.
+            Estamos temporariamente sem sistema de estoque devido ao inventário mensal no SAP.<br>Estaremos de volta em breve. Por favor, aguarde.
         </div>
-        <button class="try-again-button" id="try-again-button" style="display: none;">Tentar agora</button>
+        <button class="try-again-button" id="try-again-button" style="display: none;">Tentar novamente</button>
     </div>
 
     <script>
-        // Defina o horário final para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
-        const returnTime = "20:00:00";
+        // Defina o horário previsto para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
+        const returnTime = "23:59:59";
 
         function updateCountdown() {
             const currentTime = new Date();
@@ -73,7 +74,7 @@
             const countdownClock = document.getElementById('countdown-clock');
             const tryAgainButton = document.getElementById('try-again-button');
 
-            // Analise a hora de retorno definida
+            // Analise o horário de retorno definido
             const returnTimeArray = returnTime.split(':');
             returnDateTime.setHours(parseInt(returnTimeArray[0], 10), parseInt(returnTimeArray[1], 10), parseInt(returnTimeArray[2], 10));
 
@@ -83,6 +84,11 @@
             if (timeDifference <= 0) {
                 countdownClock.textContent = '00:00:00';
                 tryAgainButton.style.display = 'block';
+
+                // Adicione o evento de clique para redirecionar para "index.html" quando o botão for clicado
+                tryAgainButton.addEventListener('click', function () {
+                    window.location.href = 'index.html';
+                });
             } else {
                 const hours = String(Math.floor(timeDifference / 3600000)).padStart(2, '0');
                 const minutes = String(Math.floor((timeDifference % 3600000) / 60000)).padStart(2, '0');
@@ -93,12 +99,6 @@
         }
 
         updateCountdown();
-
-        const tryAgainButton = document.getElementById('try-again-button');
-        tryAgainButton.addEventListener('click', function () {
-            // Aqui você pode adicionar ação para tentar novamente, como recarregar a página ou redirecionar.
-            alert('Tentar novamente');
-        });
     </script>
 </body>
 </html>
