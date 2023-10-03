@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0049)https://kauanlauer.github.io/comercial/index.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva</title>
     <style>
@@ -95,53 +95,18 @@
 </head>
 <body>
     <div class="countdown-container">
-        <div class="countdown-clock" id="countdown-clock">Carregando...</div>
+        <div class="countdown-clock" id="countdown-clock">Aguarde...</div>
         <div class="countdown-message">
-            Estamos sem sistema de estoque devido ao inventário mensal SAP.<br>Voltaremos em breve.
+            Estamos sem sistema de estoque devido ao inventário mensal SAP.<br>Voltaremos em breve. <br> 
         </div>
-        <button class="try-again-button" id="try-again-button" style="display: none;">Tentar agora</button>
+        <button class="try-again-button" id="try-again-button" style="display: block;">Tentar agora</button>
     </div>
 
     <script>
-       // Defina o horário previsto para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
-const returnTime = "-15:00:00";
-
-function updateCountdown() {
-    const currentTime = new Date();
-    const returnDateTime = new Date();
-    const countdownClock = document.getElementById('countdown-clock');
-    const tryAgainButton = document.getElementById('try-again-button');
-    const countdownMessage = document.getElementById('countdown-message');
-
-    // Analise o horário de retorno definido
-    const returnTimeArray = returnTime.split(':');
-    returnDateTime.setHours(parseInt(returnTimeArray[0], 10), parseInt(returnTimeArray[1], 10), parseInt(returnTimeArray[2], 10));
-
-    // Adicione um dia à data de retorno
-    returnDateTime.setDate(returnDateTime.getDate() + 1);
-
-    const timeDifference = returnDateTime - currentTime;
-
-    // Verifique se o tempo já passou
-    if (timeDifference <= 0) {
-        countdownClock.textContent = '00:00:00';
-        tryAgainButton.style.display = 'block';
-        countdownMessage.textContent = 'O sistema já está de volta.';
-        tryAgainButton.addEventListener('click', function () {
-            window.location.href = 'index.html';
+        document.getElementById("try-again-button").addEventListener("click", function() {
+            window.location.href = "index.html";
         });
-    } else {
-        const hours = String(Math.floor(timeDifference / 3600000)).padStart(2, '0');
-        const minutes = String(Math.floor((timeDifference % 3600000) / 60000)).padStart(2, '0');
-        const seconds = String(Math.floor((timeDifference % 60000) / 1000)).padStart(2, '0');
-        countdownClock.textContent = `${hours}:${minutes}:${seconds}`;
-        countdownMessage.textContent = `${hours}h ${minutes}m ${seconds}s`;
-        setTimeout(updateCountdown, 1000);
-    }
-}
-
-updateCountdown();
-
     </script>
+    
 </body>
 </html>
