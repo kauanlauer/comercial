@@ -97,14 +97,14 @@
     <div class="countdown-container">
         <div class="countdown-clock" id="countdown-clock">Carregando...</div>
         <div class="countdown-message">
-            Estamos temporariamente sem sistema de estoque devido ao inventário mensal no SAP. Estaremos de volta em breve.
+            Estamos sem sistema de estoque devido ao inventário mensal SAP.<br>Voltaremos em breve.
         </div>
         <button class="try-again-button" id="try-again-button" style="display: none;">Tentar agora</button>
     </div>
 
     <script>
        // Defina o horário previsto para o retorno do sistema (formato 24 horas, ex: "HH:MM:SS")
-const returnTime = "09:00:00";
+const returnTime = "-15:00:00";
 
 function updateCountdown() {
     const currentTime = new Date();
