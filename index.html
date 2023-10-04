@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Versão 1.0.9</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Adicione o link para o ícone aqui -->
+    <title>AVISO</title>
     <style>
         body {
-            background-color: #1e272e;
+            background-color: #3498db;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -16,139 +14,84 @@
             margin: 0;
         }
 
-        .container {
-            background-color: #ecf0f3;
-            border-radius: 8px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 300px;
+        .countdown-container {
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            color: #fff;
         }
 
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
+        .countdown-clock {
+            font-size: 72px;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            border-radius: 4px;
             margin-bottom: 20px;
-            font-size: 16px;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            cursor: wait; /* Adiciona um cursor de "carregando" */
+            animation: pulse 1s infinite; /* Adiciona uma animação de pulsação */
         }
 
-        button[type="submit"] {
-            background-color: #3498db;
+        .countdown-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            animation: blink 2s infinite; /* Piscar a cada 2 segundos */
+        }
+
+        .try-again-button {
+            background-color: #e74c3c;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
+            padding: 15px 30px;
+            border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 24px;
             transition: background-color 0.3s;
-            font-size: 16px;
         }
 
-        button[type="submit"]:hover {
-            background-color: #2980b9;
+
+        /* Animação de pulsação */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
-        /* Estilo para o link "Esqueci minha senha" */
-        .forgot-password {
-            color: #2980b9;
-            text-decoration: none;
+        /* Exemplo de gradiente de fundo */
+        body {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
         }
 
-        .forgot-password:hover {
-            text-decoration: underline;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Faça seu Login</h2>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="username">Nome de Usuário:</label>
-                <input type="text" id="username" name="username" placeholder="Seu nome de usuário" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" placeholder="Sua senha" required>
-            </div>
-             <div class="form-group">
-                <label for="remember">Lembrar senha:</label>
-                <input type="checkbox" id="remember" name="remember">
-            </div>
-            <div class="form-group">
-                <button type="submit">Entrar</button>
-            </div>
-        </form>
-        <p><a class="forgot-password" href="https://api.whatsapp.com/send?phone=554199327757">Esqueci minha senha</a></p>
-    </div>
+    <div class="countdown-container">
+        <div class="countdown-clock" id="countdown-clock">AVISO</div>
+        <div class="countdown-message">
+            Devido aos termos da empresa e às diretrizes da auditoria, <br>apenas a equipe de Tecnologia da Informação está autorizada a criar sites para uso inteiro..</BR> <br>sendo assim não pode ter nenhum tipo de modernização sem ser feito pela equipe da TI<br>Obrigado até aqui. <br> 
+        </div>
+        
 
     <script>
-        // Depois de verificar as credenciais do usuário com sucesso, defina o cookie de autenticação e localStorage
-function loginUser(username, password) {
-    // Verifique as credenciais (substitua isso com sua lógica real)
-    if (username === "usuario" && password === "senha") {
-        // Define o cookie de autenticação para 7 dias
-        setCookie("loggedInUser", username, 7);
-        // Armazene também no localStorage para persistir após a atualização da página
-        localStorage.setItem("loggedInUser", username);
-        // Redirecionar para a página de estoque
-        window.location.href = "estoquelog.html";
-    } else {
-        // Exibir uma mensagem de erro (substitua isso com sua lógica real)
-        alert("Credenciais inválidas");
-    }
-}
-        const users = [
-            { username: "erick.lauer", password: "123456", userType: "Administrador" },
-            { username: "vendas", password: "vendas", userType: "Usuário Comum" },
-            { username: "anni.frogel", password: "123456", userType: "Administrador" },
-            { username: "leticia.cadena", password: "123456", userType: "Administrador" },
-            { username: "adm", password: "123456", userType: "Administrador" },
-            { username: "representantes", password: "representantes", userType: "Usuário Comum" },
-             { username: "matheus.albuquerque", password: "1234", userType: "Usuário Comum" },
-             { username: "suzan.oliveira", password: "1234", userType: "Usuário Comum" },
-        ];
-
-        document.getElementById("login-form").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            const user = users.find((u) => u.username === username && u.password === password);
-
-            if (user) {
-                if (user.userType === "Administrador") {
-                    localStorage.setItem("loggedInUser", user.username);
-                    window.location.href = "indexadm.html";
-                } else if (user.userType === "Usuário Comum") {
-                    localStorage.setItem("loggedInUser", user.username);
-                    window.location.href = "indexcomum.html";
-                }
-            } else {
-                alert("Credenciais inválidas. Tente novamente.");
-            }
-        });
     </script>
+    
 </body>
 </html>
