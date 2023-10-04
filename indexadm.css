@@ -203,3 +203,8 @@ header {
     border-bottom: 1px solid #ccc; /* Linha abaixo do item */
     padding: 10px 0; /* Espaçamento interno para separar as linhas do conteúdo */
 }
+/* Estilo de cursor de lupa */
+elemento {
+    cursor: zoom-in;
+  }
+  

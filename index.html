@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Versão 1.0.9</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Adicione o link para o ícone aqui -->
     <style>
         body {
@@ -103,6 +103,21 @@
     </div>
 
     <script>
+        // Depois de verificar as credenciais do usuário com sucesso, defina o cookie de autenticação e localStorage
+function loginUser(username, password) {
+    // Verifique as credenciais (substitua isso com sua lógica real)
+    if (username === "usuario" && password === "senha") {
+        // Define o cookie de autenticação para 7 dias
+        setCookie("loggedInUser", username, 7);
+        // Armazene também no localStorage para persistir após a atualização da página
+        localStorage.setItem("loggedInUser", username);
+        // Redirecionar para a página de estoque
+        window.location.href = "estoquelog.html";
+    } else {
+        // Exibir uma mensagem de erro (substitua isso com sua lógica real)
+        alert("Credenciais inválidas");
+    }
+}
         const users = [
             { username: "erick.lauer", password: "123456", userType: "Administrador" },
             { username: "vendas", password: "vendas", userType: "Usuário Comum" },
