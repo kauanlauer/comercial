@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url=index.html">
     <link rel="stylesheet" href="estoquelog.css">
     <title>Estoque Comercial</title>
 </head>
@@ -28,13 +28,19 @@
                 <!-- Seu conteúdo principal aqui -->
                 <h1>Bem-vindo ao Sistema de Estoque Curitiba</h1>
             </section>
-
-            <!-- Elemento para incorporar a planilha com um ID -->
-            <iframe id="planilha" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQekh1AA7seyXPVh2nRbacI2-mZKYkNcs0SXWoSAn8OEEmOS2qr4GbPWz60qoqRpzDyuBDMbqm_yPWC/pubhtml" width="1100" height="600" frameborder="1" scrolling="yes"></iframe>
         </main>
     </div>
     <script src="indexadm.js"></script>
     <script>
+          // Redirecionar para a página de login após um tempo
+        const timeout = 3600000; // 5 minutos em milissegundos
+
+        function redirectToLogin() {
+            window.location.href = "index.html"; // Redirecionar para a página de login
+        }
+
+        setTimeout(redirectToLogin, timeout); // Configurar o temporizador
+    </script>
         // Recupere o nome do usuário do localStorage
         const username = localStorage.getItem("loggedInUser");
 
